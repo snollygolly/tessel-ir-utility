@@ -5,6 +5,7 @@ const sockets = require("../controllers/sockets");
 
 const Promise = require("bluebird");
 const co = require("co");
+const fs = require("fs");
 
 const tessel = require("tessel");
 const infraredlib = require("ir-attx4");
