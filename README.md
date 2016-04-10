@@ -27,9 +27,14 @@ npm install
 
 * Create your config.  There's a `config.example.json` file in the root.  Save it as `config.json` and leave it in the root.  If you want to run the application on a different port or change other values, this can be done here.
 
-* Start it up.
+* Run it from the Tessel
 ```
-npm start
+npm run tessel
+```
+
+* Or deploy it to the Tessel
+```
+npm run deploy
 ```
 
 * Enjoy!
