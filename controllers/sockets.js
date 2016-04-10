@@ -12,32 +12,26 @@ io.on("status", (ctx, data) => {
 	io.socket.emit("status", ir.ready);
 });
 
-module.exports.ready = function ready() {
-	// Broadcasts to all other connections
-	io.broadcast("ready", "OK");
+io.on("send", (ctx, data) => {
+	co(function* send() {
+		const result = yield ir.send(data);
+		if (result) {
+			// a result is an error
+			throw result;
+		}
+		io.broadcast("success", null);
+	}).catch(onerror);
+});
+
+module.exports.broadcast = (event, data) => {
+	// gener
+	io.broadcast(event, data);
 };
 
-module.exports.received = function received(data) {
-	// Broadcasts to all other connections
-	io.broadcast("received", data);
-};
-
-module.exports.discarded = function discarded(data) {
-	// Broadcasts to all other connections
-	io.broadcast("discarded", data);
-};
-
-module.exports.die = function die() {
-	// Broadcasts to all other connections
-	io.broadcast("die", "OK");
-};
-
-function onError(err) {
+function onerror(err) {
 	// log any uncaught errors
 	// co will not throw any errors you do not handle!!!
 	// HANDLE ALL YOUR ERRORS!!!
+	io.broadcast("failure", err);
 	console.error(err.stack);
-	console.log("***: Dying...");
-	module.exports.die();
-	return process.exit();
 }

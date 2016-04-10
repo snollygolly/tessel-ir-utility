@@ -18,7 +18,7 @@ module.exports.ready = false;
 infrared.on("ready", () => {
 	console.log("Connected to IR!");
 	module.exports.ready = true;
-	sockets.ready();
+	sockets.broadcast("ready", null);
 });
 
 // If we get data, print it out
@@ -29,14 +29,22 @@ infrared.on("data", (data) => {
 	if (code.length <= config.site.options.discard_length) {
 		// not sure what this is, I don't want it though
 		console.log("Discarding...");
-		sockets.discarded(code);
+		sockets.broadcast("discarded", code);
 		return;
 	}
 	const filePath = path.resolve(__dirname, "..", `captures/${now}.json`);
 	fs.writeFileSync(filePath, JSON.stringify(code));
 	console.log(`Wrote file as ${now}.json`);
-	sockets.received({
+	sockets.broadcast("received", {
 		data: code,
 		name: `${now}.json`
 	});
 });
+
+module.exports.send = function* send(data) {
+	const filePath = path.resolve(__dirname, "..", `captures/${data}`);
+	const rawCapture = fs.readFileSync(filePath);
+	const capture = JSON.parse(rawCapture);
+	const result = yield infrared.sendRawSignalAsync(38, new Buffer(capture));
+	return result;
+};
