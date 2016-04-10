@@ -4,7 +4,7 @@
 This project's goal is to make getting started with Tessel's IR module a little easier.  That's done by doing a few things:
 
 - Allowing you to capture IR signals and download them.
-- Providing a list of all captured IR signals and allowing you to send them. _(coming soon)_
+- Providing a list of all captured IR signals and allowing you to send them.
 - Formats the data a variety of ways to make analysis easier. _(coming soon)_
 
 ## What you need to get started
