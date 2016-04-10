@@ -1,5 +1,11 @@
-# tessel-ir-utility
-A project to make getting started with Tessel's IR module a little easier.
+# :bulb: tessel-ir-utility
+
+## The Goal
+This project's goal is to make getting started with Tessel's IR module a little easier.  That's done by doing a few things:
+
+- Allowing you to capture IR signals and download them.
+- Providing a list of all captured IR signals and allowing you to send them. _(coming soon)_
+- Formats the data a variety of ways to make analysis easier. _(coming soon)_
 
 ## What you need to get started
 
