@@ -9,7 +9,16 @@ const bodyParser = require("koa-bodyparser");
 
 const app = koa();
 
+// socket stuff
+const KoaSocket = require("koa-socket");
+const io = new KoaSocket();
+
+io.attach(app);
+
 exports.app = app;
+
+// for all socket interations
+require("./controllers/sockets");
 
 // misc handlebars helpers
 require("./helpers/handlebars");

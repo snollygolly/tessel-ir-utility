@@ -1,6 +1,9 @@
 {
-  "site":{
-    "port": 8000,
-    "name": "Tessel IR Utility"
-  }
+	"site":{
+		"port": 8000,
+		"name": "Tessel IR Utility",
+		"options": {
+			"discard_length": 10
+		}
+	}
 }
