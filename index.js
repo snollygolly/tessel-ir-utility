@@ -1,10 +1,11 @@
 "use strict";
 
 const config = require("./config.json");
+const IP = require("os").networkInterfaces().wlan0[0].address;
 
 const koa = require("koa");
 const hbs = require("koa-hbs");
-const serve = require("koa-static-folder");
+const serve = require("koa-static");
 const bodyParser = require("koa-bodyparser");
 
 const app = koa();
@@ -27,7 +28,7 @@ require("./helpers/handlebars");
 app.use(bodyParser());
 
 // statically serve assets
-app.use(serve("./assets"));
+app.use(serve(`${__dirname}`));
 
 // load up the handlebars middlewear
 app.use(hbs.middleware({
@@ -50,7 +51,7 @@ app.use(function* error(next) {
 
 require("./routes");
 
-console.log(`${config.site.name} is now listening on port ${config.site.port}`);
+console.log(`${config.site.name} is now listening on http://${IP}:${config.site.port}`);
 app.listen(config.site.port);
 
 process.on("SIGINT", function exit() {

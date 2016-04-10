@@ -2,6 +2,6 @@
 
 const config = require("../config.json");
 
-module.exports.account = function* account() {
-	yield this.render("account", {title: config.site.name});
+module.exports.index = function* index() {
+	yield this.render("index", {title: config.site.name, script: "ir"});
 };

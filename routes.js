@@ -10,10 +10,6 @@ const routes = new Router();
 const main = require("./controllers/main.js");
 
 // routes
-routes.get("/", function* get() {
-	yield this.render("index", {title: config.site.name});
-});
-
-routes.get("/account", main.account);
+routes.get("/", main.index);
 
 app.use(routes.middleware());

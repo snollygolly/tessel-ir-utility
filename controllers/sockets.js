@@ -22,6 +22,11 @@ module.exports.received = function received(data) {
 	io.broadcast("received", data);
 };
 
+module.exports.discarded = function discarded(data) {
+	// Broadcasts to all other connections
+	io.broadcast("discarded", data);
+};
+
 module.exports.die = function die() {
 	// Broadcasts to all other connections
 	io.broadcast("die", "OK");

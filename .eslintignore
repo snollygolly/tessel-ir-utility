@@ -3,3 +3,4 @@ node_modules/*
 coverage/*
 shipitfile.js
 tmp/*
+helpers/serve.js
