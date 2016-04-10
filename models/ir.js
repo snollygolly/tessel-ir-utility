@@ -25,7 +25,7 @@ infrared.on("ready", () => {
 infrared.on("data", (data) => {
 	const now = Date.now();
 	const code = data.toJSON().data;
-	console.log(`Received RX Data: ${data.toString("hex").length}`);
+	console.log(`Received RX Data: ${data.toJSON().data.length}`);
 	if (code.length <= config.site.options.discard_length) {
 		// not sure what this is, I don't want it though
 		console.log("Discarding...");
@@ -35,5 +35,8 @@ infrared.on("data", (data) => {
 	const filePath = path.resolve(__dirname, "..", `captures/${now}.json`);
 	fs.writeFileSync(filePath, JSON.stringify(code));
 	console.log(`Wrote file as ${now}.json`);
-	sockets.received(code);
+	sockets.received({
+		data: code,
+		name: `${now}.json`
+	});
 });

@@ -22,10 +22,17 @@ $(document).ready(function() {
 	});
 
 	socket.on("discarded", function(data){
-		$("#tessel-status").append("Data discarded due to thresholds [" + data.length + "]\n");
+		$("#tessel-status").append("Data discarded due to thresholds [" + data.length + "B]\n");
 	});
 
 	socket.on("received", function(data){
-		$("#tessel-status").append("Data received [" + data.length + "]\n");
+		$("#tessel-status").append("Data received [" + data.name + " - " + data.data.length + "B]\n");
+		var logAnchor = document.createElement("a");
+		var logBr = document.createElement("br");
+		$(logAnchor).prop("href", "/captures/" + data.name);
+		$(logAnchor).prop("target", "_blank");
+		$(logAnchor).html(data.name);
+		$("#tessel-log").append(logAnchor);
+		$("#tessel-log").append(logBr);
 	});
 });
