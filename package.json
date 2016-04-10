@@ -1,0 +1,31 @@
+{
+	"name": "tessel-ir-utility",
+	"version": "1.0.0",
+	"description": "A project to make getting started with Tessel's IR module a little easier.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/snollygolly/tessel-ir-utility.git"
+	},
+	"author": "snollygolly",
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://github.com/snollygolly/tessel-ir-utility/issues"
+	},
+	"homepage": "https://github.com/snollygolly/tessel-ir-utility#readme",
+	"dependencies": {
+		"koa": "^1.1.2",
+		"koa-bodyparser": "^2.0.1",
+		"koa-generic-session": "^1.10.0",
+		"koa-hbs": "^0.7.0",
+		"koa-passport": "^1.2.0",
+		"koa-router": "^5.3.0",
+		"koa-static-folder": "^0.1.6",
+		"bluebird": "^3.3.4",
+		"co": "^4.6.0",
+		"ir-attx4": "^0.2.9"
+	}
+}

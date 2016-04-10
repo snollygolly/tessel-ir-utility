@@ -1,0 +1,6 @@
+{
+  "site":{
+    "port": 8000,
+    "name": "Tessel IR Utility"
+  }
+}
