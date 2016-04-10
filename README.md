@@ -4,7 +4,7 @@ A project to make getting started with Tessel's IR module a little easier.
 ## What you need to get started
 
 - A [Tessel 2](https://tessel.io/)
-- The [Tessel 2 IR Module](https://tessel.io/modules#module-infrared)
+- A [Tessel 2 IR Module](https://tessel.io/modules#module-infrared)
 - An IR remote (I think any will work?)
 
 ## How to run it

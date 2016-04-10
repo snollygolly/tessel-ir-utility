@@ -6,7 +6,6 @@ const IP = require("os").networkInterfaces().wlan0[0].address;
 const koa = require("koa");
 const hbs = require("koa-hbs");
 const serve = require("koa-static");
-const bodyParser = require("koa-bodyparser");
 
 const app = koa();
 
@@ -23,9 +22,6 @@ require("./controllers/sockets");
 
 // misc handlebars helpers
 require("./helpers/handlebars");
-
-// body parser
-app.use(bodyParser());
 
 // statically serve assets
 app.use(serve(`${__dirname}`));

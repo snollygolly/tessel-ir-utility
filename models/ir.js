@@ -6,6 +6,7 @@ const sockets = require("../controllers/sockets");
 const Promise = require("bluebird");
 const co = require("co");
 const fs = require("fs");
+const path = require("path");
 
 const tessel = require("tessel");
 const infraredlib = require("ir-attx4");
@@ -31,7 +32,8 @@ infrared.on("data", (data) => {
 		sockets.discarded(code);
 		return;
 	}
-	fs.writeFileSync(`${__dirname}/codes/${now}.json`, JSON.stringify(code));
+	const filePath = path.resolve(__dirname, "..", `captures/${now}.json`);
+	fs.writeFileSync(filePath, JSON.stringify(code));
 	console.log(`Wrote file as ${now}.json`);
 	sockets.received(code);
 });
