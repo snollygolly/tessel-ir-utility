@@ -4,6 +4,8 @@
 	"description": "A project to make getting started with Tessel's IR module a little easier.",
 	"main": "index.js",
 	"scripts": {
+		"start": "node index.js",
+		"tessel": "t2 run --full index.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
