@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	$("#tessel-log").hide();
 	var socket = io();
 	socket.emit("status", "go");
 
@@ -7,14 +8,16 @@ $(document).ready(function() {
 		var status;
 		if (data === true){
 			status = "ready";
+			isReady();
 		}else{
 			status = "not ready";
 		}
-		statusLog("Status Check: Tessel is " + status + "");
+		statusLog("Status Check: Tessel is " + status);
 	});
 
 	socket.on("ready", function(){
 		statusLog("Tessel IR module is ready!");
+		isReady();
 	});
 
 	socket.on("die", function(){
@@ -60,4 +63,9 @@ $(document).ready(function() {
 
 function statusLog(message) {
 	$("#tessel-status").append("* " + message + "\n");
+}
+
+function isReady() {
+	$("#tessel-headline").html("Now that your Tessel is ready, simply point an IR remote at the sensor and press a button.  You'll see it appear below along with options to download or send it.");
+	$("#tessel-log").show();
 }
